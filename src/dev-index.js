@@ -1,14 +1,3 @@
-# editor-plugin-yorkie
-yorkie extension for easylogic studio 
-
-# What I need 
-
-* Layer Definition for Yorkie
-
-
-# Concept 
-
-```js
 import editor from '@easylogic/editor';
 import '@easylogic/editor/dist/editor.css';
 import yorkie from 'yorkie-js-sdk';
@@ -37,10 +26,31 @@ async function createYorkie(editor) {
         yorkieDocument.subscribe((event) => {
 
             if (event.type === 'remote-change') {
+
+                // 여긴 받은 change 를 업데이트를 해야하는데 
                 const remoteDoc = JSON.parse(yorkieDocument.toJSON());
 
-                // todo 변경된 부분만 업데이트를 할 수 있나요? 
+                // console.log(JSON.parse(JSON.stringify(remoteDoc)));
+
                 editor.emit('load.json', remoteDoc.projects);
+
+                setTimeout(() => {
+                    // console.log(editor.selection.currentProject.indexed);
+                    editor.nextTick(() => {
+                        // console.log(...editor.selection.itemsByIds(editor.selection.ids));
+    
+                        editor.selection.select(...editor.selection.itemsByIds(editor.selection.ids));
+    
+                            // editor.emit('refreshAll');
+                            // editor.emit('refreshSelectionTool');
+                            // editor.emit('refreshStyleView');
+
+
+                            // console.log(editor.selection.currentProject.indexed);
+    
+                    })
+                }, 500);
+
             }
 
         });
@@ -56,6 +66,7 @@ async function syncToYorkie(editor) {
     const trySend = () => {
         if (yorkieDocument) {
             yorkieDocument.update((root) => {
+                // console.log('a');
                 // todo 변경 지점만 보낼 수 있나요? 
                 root.projects = JSON.parse(editor.makeResource(editor.projects))
             }, `update projects all items`);
@@ -93,7 +104,3 @@ editor.createDesignEditor({
         }
     ]
 })
-
-```
-
-# LICENSE : MIT 
