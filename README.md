@@ -3,7 +3,21 @@ yorkie extension for easylogic studio
 
 # What I need 
 
-* Layer Definition for Yorkie
+Yorkie 모델 기반의 Layer Model 이 따로 존재햐야함 
+
+지금은 Item 기준으로 JSON 형태의 데이타를 다루도록 되어 있는데 
+
+이걸 Yorkie 의 Root 로 변경해야함 
+
+예를 들어 Project 를 생성하는 시점에 yorkie document 를 생성하고 root 를 연결함. 
+
+이후 appendChild 나 기타 하위 요소가 추가 되면  Layer 를 생성하고 Layer 에 맞는 모델을 Yorkie 데이타로 넣을 수 있도록 구조를 맞춰야할 수 있음. 
+
+```js
+editor.createItem({ itemType: 'rect' })
+```
+
+
 
 
 # Concept 
