@@ -11,11 +11,11 @@ let yorkieDocument = null;
 async function createYorkie(editor) {
     try {
         // 01. create client with RPCAddr(envoy) then activate it.
-        yorkieClient = yorkie.createClient('https://localhost:8080');
+        yorkieClient = yorkie.createClient('https://api.yorkie.dev');
         await yorkieClient.activate();
 
         // 02. create a document then attach it into the client.
-        yorkieDocument = yorkie.createDocument('easylogic.studio', 'webeditor');
+        yorkieDocument = yorkie.createDocument('easylogic.studio', 'webeditor-2');
         await yorkieClient.attach(yorkieDocument);
 
         yorkieDocument.update((root) => {

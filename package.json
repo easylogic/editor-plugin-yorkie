@@ -61,6 +61,6 @@
     "@easylogic/editor": "*"
   },
   "dependencies": {
-    "yorkie-js-sdk": "^0.1.5"
+    "yorkie-js-sdk": "^0.1.8"
   }
 }

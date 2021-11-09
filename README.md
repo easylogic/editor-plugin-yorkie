@@ -14,7 +14,7 @@ Yorkie 모델 기반의 Layer Model 이 따로 존재햐야함
 이후 appendChild 나 기타 하위 요소가 추가 되면  Layer 를 생성하고 Layer 에 맞는 모델을 Yorkie 데이타로 넣을 수 있도록 구조를 맞춰야할 수 있음. 
 
 ```js
-editor.createItem({ itemType: 'rect' })
+editor.createItem({ itemType: 'project' }) 
 ```
 
 
@@ -36,7 +36,7 @@ let yorkieDocument = null;
 async function createYorkie(editor) {
     try {
         // 01. create client with RPCAddr(envoy) then activate it.
-        yorkieClient = yorkie.createClient('https://localhost:8080');
+        yorkieClient = yorkie.createClient('https://api.yorkie.dev');
         await yorkieClient.activate();
 
         // 02. create a document then attach it into the client.
